@@ -1,0 +1,24 @@
+CLAUDE.md
+  3ae9f53c3d0ce19f 1-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.5",
+  "base_commit_sha": "b8c75b28e8faae67cb83e7f6ce0f4ff5418550be",
+  "prompts": {
+    "3ae9f53c3d0ce19f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "363ecdd2-44b8-48de-a58f-81c782ddf430",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 78,
+      "total_deletions": 0,
+      "accepted_lines": 78,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/c07800b9f6e28dac9e6c2af83bafe323cc01e0806e1b6b4bfe66981f2e43ceb0"
+    }
+  }
+}
