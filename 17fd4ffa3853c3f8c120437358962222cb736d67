@@ -1,0 +1,102 @@
+src/components/chat/ClarificationCard.tsx
+  4954bb68e095afed 1,4-21,24-29,31,33-34,36-38,42-43,45-46,49-50,52-55,58-60,62,65-67
+  aaf5034ce0ca0b04 2-3,22-23,30,32,35,39-41,44,47-48,51,57,61,63-64
+src/types/documents.ts
+  4954bb68e095afed 1-33
+src/hooks/useChat.ts
+  4954bb68e095afed 1-88
+src/hooks/useMentionSearch.ts
+  4954bb68e095afed 1-37
+src/components/chat/TypingIndicator.tsx
+  4954bb68e095afed 1-13
+src/components/chat/ChatContainer.tsx
+  4954bb68e095afed 1,5-32,39-41,48-52,56-61,64-67
+  aaf5034ce0ca0b04 2-4,33-38,42-47,53-55,62-63
+src/components/input/ChatInput.tsx
+  aaf5034ce0ca0b04 5,100-101,104,107
+  4954bb68e095afed 1-4,6-86,88-99,102-103,105-106,108-110
+src/lib/sse.ts
+  4954bb68e095afed 1-52
+src/routes/index.tsx
+  4954bb68e095afed 2,4,6-7
+src/lib/constants.ts
+  4954bb68e095afed 1-8
+src/types/chat.ts
+  4954bb68e095afed 1-38
+src/lib/api.ts
+  4954bb68e095afed 1-15
+src/components/chat/POPreviewPanel.tsx
+  4954bb68e095afed 1,15-32,35-45,49-65,67,69-70,72,74-95,99,102,114,117,121-122,128,131-133,136,138-139,143-146,149,153,155-160,165-166,168-169,172-175,177,179-182
+  aaf5034ce0ca0b04 2-14,33-34,46-48,66,68,71,73,96-98,100-101,103-113,115-116,118-120,123-127,129-130,134-135,137,140-142,147-148,150-152,154,161-164,167,170-171,176,178
+src/components/chat/MessageBubble.tsx
+  4954bb68e095afed 2-13,17,19-25,35-37
+  aaf5034ce0ca0b04 1,14-16,18,26-34
+src/types/master-data.ts
+  4954bb68e095afed 1-11
+src/components/input/MentionExtension.ts
+  4954bb68e095afed 1-71
+src/components/chat/SubmitResultCard.tsx
+  4954bb68e095afed 1,3-12,16-17,20,24,28-30
+  aaf5034ce0ca0b04 2,13-15,18-19,21-23,25-27
+src/stores/chat-store.ts
+  4954bb68e095afed 1-24,26-136
+src/components/chat/MessageList.tsx
+  4954bb68e095afed 1-71
+src/components/input/MentionDropdown.tsx
+  4954bb68e095afed 1-8,14-92,96,101-103,105,107,110-112,114-115,118-125,129,134-137,139-140,144,146-147,149-152,154-157,159,162-173,175,177,180-181,183,187-191
+  aaf5034ce0ca0b04 9-13,93-95,97-100,104,106,108-109,113,116-117,126-128,130-133,138,141-143,145,148,153,158,160-161,174,176,178-179,182,184-186
+src/components/chat/MentionChip.tsx
+  4954bb68e095afed 2-8,13-16,20-21,23-24
+  aaf5034ce0ca0b04 1,9-12,17-19,22
+src/styles.css
+  4954bb68e095afed 20-32,143
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.5",
+  "base_commit_sha": "17fd4ffa3853c3f8c120437358962222cb736d67",
+  "prompts": {
+    "4954bb68e095afed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "25062386-f791-4520-a415-32748da2ca43",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 1259,
+      "total_deletions": 135,
+      "accepted_lines": 1103,
+      "overriden_lines": 2,
+      "messages_url": "https://usegitai.com/cas/29f8c4e552fae1802d148f967a4c5587eb62a4accd445dc242f73a28e5b7fcaa"
+    },
+    "aaf5034ce0ca0b04": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e975ac25-1018-45fa-9248-3dac1d501d20",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 304,
+      "total_deletions": 238,
+      "accepted_lines": 193,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/48cd07625eee7b707f3b8e06c739afe15b6d108062bf780d64af39eb2b2e3d06"
+    },
+    "cecb0a3241e34e48": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0ad5fc27-0b26-422e-b4e1-7ebe161216be",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 1591,
+      "total_deletions": 137,
+      "accepted_lines": 1457,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/d7d3e0af627ca2cf03ed9147f2246e0c6685cabc52485a84e5aea19080ece42d"
+    }
+  }
+}
