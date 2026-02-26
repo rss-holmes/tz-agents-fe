@@ -42,6 +42,7 @@ bun run check
 ### Routing
 
 File-based routing via `@tanstack/router-plugin`. Routes live in `src/routes/` and map directly to URL paths:
+
 - `src/routes/__root.tsx` — root layout wrapping all pages (imports global styles, renders `<Outlet />` and devtools)
 - `src/routes/index.tsx` — home page (`/`)
 - New routes: add a `.tsx` file in `src/routes/` and the plugin auto-generates `src/routeTree.gen.ts`
