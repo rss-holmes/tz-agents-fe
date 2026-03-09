@@ -1,0 +1,40 @@
+src/stores/chat-store.ts
+  d9b96befc13a7763 2,33,137-142
+src/components/chat/POPreviewPanel.tsx
+  d9b96befc13a7763 109,115-120,125,129,131-136,141,146,153,159
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "484b186647fe7f133b5ffe5a3af4c6ff5970e9a2",
+  "prompts": {
+    "d9b96befc13a7763": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "21e90cd1-de7c-43cf-9f53-f646ea128433",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 50,
+      "total_deletions": 34,
+      "accepted_lines": 27,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/0550125459d6d2984bbc9654d9877fa555dd00b2c61f0f99c85fa9241c6a57d7"
+    },
+    "ee9fcee107e730bd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e7c0f4a5-581f-4b6d-84de-3763691f9b04",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/c9285f1e6ee47390045245815d9a7782da12932491c518d0d769537e14127b8c"
+    }
+  }
+}
