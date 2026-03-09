@@ -24,7 +24,7 @@ export default function MessageBubble({ message }: Props) {
           )}
         </div>
       ) : (
-        <div className="max-w-[80%] prose prose-sm max-w-none">
+        <div className="max-w-[80%] prose prose-sm">
           <Markdown>{message.content}</Markdown>
         </div>
       )}

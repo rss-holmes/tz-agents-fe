@@ -111,14 +111,14 @@ export default function ChatInput({ onSend, disabled }: Props) {
 
   return (
     <div className="flex items-end gap-2 max-w-3xl mx-auto">
-      <div className="flex-1 bg-white border border-gray-300 rounded-xl px-3 py-2 focus-within:border-blue-400 focus-within:ring-1 focus-within:ring-blue-400">
+      <div className="flex-1 bg-white border border-gray-300 rounded-xl px-3 py-2 focus-within:border-gray-400 focus-within:ring-1 focus-within:ring-gray-400">
         <EditorContent editor={editor} />
       </div>
       <Button
         size="icon"
         onClick={handleSend}
         disabled={disabled}
-        className="rounded-xl bg-blue-600 hover:bg-blue-700"
+        className="rounded-xl bg-gray-400 hover:bg-gray-700"
       >
         <Send size={20} />
       </Button>

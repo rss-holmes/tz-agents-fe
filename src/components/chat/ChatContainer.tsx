@@ -11,7 +11,7 @@ export default function ChatContainer() {
   const showPanel = chat.poDraft !== null
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-white">
       {/* Left: Chat area */}
       <div
         className={`flex flex-col transition-all duration-300 ${

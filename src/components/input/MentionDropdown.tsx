@@ -149,6 +149,22 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'ArrowUp') {
+                e.preventDefault()
+                setSelectedIndex((i) => (i > 0 ? i - 1 : results.length - 1))
+              } else if (e.key === 'ArrowDown') {
+                e.preventDefault()
+                setSelectedIndex((i) => (i < results.length - 1 ? i + 1 : 0))
+              } else if (e.key === 'Enter') {
+                e.preventDefault()
+                if (results[selectedIndex]) selectItem(results[selectedIndex])
+              } else if (e.key === 'Backspace' && !searchQuery) {
+                setPhase('categories')
+                setSelectedCategory(null)
+                setSelectedIndex(0)
+              }
+            }}
             placeholder="Search..."
             className="h-8 border-0 shadow-none focus-visible:ring-0 text-sm text-gray-700 placeholder:text-gray-400"
             autoFocus
