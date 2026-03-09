@@ -5,7 +5,17 @@ import tippy from 'tippy.js'
 import MentionDropdown from './MentionDropdown'
 
 export function createMentionExtension() {
-  return Mention.configure({
+  const CustomMention = Mention.extend({
+    addAttributes() {
+      return {
+        ...this.parent?.(),
+        category: { default: null },
+        metadata: { default: {} },
+      }
+    },
+  })
+
+  return CustomMention.configure({
     HTMLAttributes: {
       class:
         'mention-chip bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-md text-sm font-medium',
