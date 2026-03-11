@@ -1,0 +1,40 @@
+src/routes/login.tsx
+  09760a081bfe430a 1-103
+src/main.tsx
+  09760a081bfe430a 3,6-7,25-27
+src/routes/index.tsx
+  09760a081bfe430a 1,3,6-11
+src/lib/auth-api.ts
+  09760a081bfe430a 1-10
+src/lib/axios.ts
+  09760a081bfe430a 1-8
+src/types/auth.ts
+  09760a081bfe430a 1-18
+src/stores/auth-store.ts
+  09760a081bfe430a 1-25
+src/lib/api.ts
+  09760a081bfe430a 1,8,11-15
+src/lib/sse.ts
+  09760a081bfe430a 1,13,17-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "4c01e7ef94f66334f51712390fa676589babb17b",
+  "prompts": {
+    "09760a081bfe430a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a9fe6c7-4d7b-4c19-8745-d21ebc94b323",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 197,
+      "total_deletions": 8,
+      "accepted_lines": 189,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/c6460469dafea15533d63c7fb44aa45b4c442bd35ac6bbffdfc565badca8dd04"
+    }
+  }
+}
