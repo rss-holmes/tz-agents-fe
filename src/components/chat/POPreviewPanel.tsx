@@ -55,7 +55,15 @@ export default function POPreviewPanel({
   isSubmitted,
   onConfirm,
 }: Props) {
-  const hasItems = draft.items && draft.items.length > 0
+  const items = draft.item_details.items
+  const hasItems = items.length > 0
+
+  // Calculate subtotal from items
+  const subtotal = items.reduce((sum, item) => {
+    const qty = item.quantity != null ? Number(item.quantity) : 0
+    const price = item.price ?? 0
+    return sum + qty * price
+  }, 0)
 
   return (
     <div className="flex flex-col h-full">
@@ -77,13 +85,27 @@ export default function POPreviewPanel({
       {/* Fields */}
       <div className="flex-1 overflow-y-auto px-6 py-4">
         <div className="space-y-1">
-          <FieldRow label="Supplier" value={draft.counterparty?.name} />
-          <FieldRow label="Terms" value={draft.terms?.name} />
           <FieldRow
-            label="Billing Address"
-            value={draft.billing_address?.text}
+            label="Buyer"
+            value={draft.buyer_details.buyer_company_details?.company_name}
           />
-          {draft.notes && <FieldRow label="Notes" value={draft.notes} />}
+          <FieldRow
+            label="Supplier"
+            value={
+              draft.supplier_details.supplier_company_details?.company_name
+            }
+          />
+          <FieldRow
+            label="Payment Terms"
+            value={draft.primary_document_details.payment_terms?.id}
+          />
+          <FieldRow
+            label="Delivery Date"
+            value={draft.primary_document_details.delivery_date}
+          />
+          {draft.comment?.value && (
+            <FieldRow label="Comment" value={draft.comment.value} />
+          )}
         </div>
 
         {/* Line Items */}
@@ -106,39 +128,30 @@ export default function POPreviewPanel({
                   <TableHead className="py-2">#</TableHead>
                   <TableHead className="py-2">Item</TableHead>
                   <TableHead className="py-2 text-right">Qty</TableHead>
-                  <TableHead className="py-2">Unit</TableHead>
                   <TableHead className="py-2 text-right">Rate</TableHead>
                   <TableHead className="py-2 text-right">Total</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {draft.items!.map((item, i) => {
-                  const rawQty =
-                    item.qty ??
-                    ((item as Record<string, unknown>).quantity as
-                      | number
-                      | undefined)
-                  const qty = rawQty != null ? Number(rawQty) : null
-                  const rate = item.rate != null ? Number(item.rate) : null
+                {items.map((item, i) => {
+                  const qty =
+                    item.quantity != null ? Number(item.quantity) : null
+                  const rate = item.price != null ? Number(item.price) : null
                   const total =
-                    item.total != null
-                      ? Number(item.total)
-                      : qty != null && rate != null
-                        ? qty * rate
-                        : null
+                    qty != null && rate != null ? qty * rate : null
                   return (
-                    <TableRow key={item.item_id} className="border-gray-100">
+                    <TableRow
+                      key={item.product ?? i}
+                      className="border-gray-100"
+                    >
                       <TableCell className="py-2 text-gray-400">
                         {i + 1}
                       </TableCell>
                       <TableCell className="py-2 break-words whitespace-normal max-w-[150px]">
-                        {item.name}
+                        {item.name ?? '\u2014'}
                       </TableCell>
                       <TableCell className="py-2 text-right text-gray-600">
                         {qty != null ? qty : '\u2014'}
-                      </TableCell>
-                      <TableCell className="py-2 text-gray-600">
-                        {item.unit ?? '\u2014'}
                       </TableCell>
                       <TableCell className="py-2 text-right text-gray-600">
                         {rate != null ? `\u20B9${rate.toFixed(2)}` : '\u2014'}
@@ -151,18 +164,18 @@ export default function POPreviewPanel({
                 })}
               </TableBody>
 
-              {draft.subtotal != null && (
+              {subtotal > 0 && (
                 <TableFooter className="bg-transparent">
                   <TableRow className="border-t-2 border-gray-300">
                     <TableCell
-                      colSpan={5}
+                      colSpan={4}
                       className="py-2 text-right font-semibold"
                     >
                       Subtotal
                     </TableCell>
                     <TableCell className="py-2 text-right font-bold">
                       {'\u20B9'}
-                      {Number(draft.subtotal).toFixed(2)}
+                      {subtotal.toFixed(2)}
                     </TableCell>
                   </TableRow>
                 </TableFooter>
