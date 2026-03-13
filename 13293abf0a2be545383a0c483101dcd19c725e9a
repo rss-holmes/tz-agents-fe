@@ -1,0 +1,28 @@
+src/lib/token-refresh.ts
+  213fd3079f60a6b1 1-74
+src/lib/sse.ts
+  213fd3079f60a6b1 3,14-15,24-35,37
+src/lib/api.ts
+  213fd3079f60a6b1 3,9,18-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.10",
+  "base_commit_sha": "13293abf0a2be545383a0c483101dcd19c725e9a",
+  "prompts": {
+    "213fd3079f60a6b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d6d9ea86-51f3-41b6-b092-a2c7457dba94",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 110,
+      "total_deletions": 3,
+      "accepted_lines": 110,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/02b01b3671a3b3352fc1a44c142226212261ebcc4d2a09c4c7492e87db98f0e4"
+    }
+  }
+}
