@@ -1,6 +1,6 @@
 import { CheckCircle, XCircle } from 'lucide-react'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import type { SubmitResult } from '@/types/chat'
+import type { SubmitResult } from '@/lib/types/chat'
 
 interface Props {
   result: SubmitResult

@@ -1,7 +1,7 @@
 import { Sparkles } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import type { ChatMessage } from '@/types/chat'
+import type { ChatMessage } from '@/lib/types/chat'
 
 interface Props {
   message: ChatMessage

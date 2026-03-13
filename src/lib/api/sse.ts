@@ -1,5 +1,5 @@
-import { useAuthStore } from '@/stores/auth-store'
-import { API_BASE_URL } from './constants'
+import { useAuthStore } from '@/lib/store/auth-store'
+import { API_BASE_URL } from '@/lib/constants'
 import { getValidToken, refreshAccessToken } from './token-refresh'
 
 export interface SSEEvent {

@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge'
-import type { Mention } from '@/types/chat'
+import type { Mention } from '@/lib/types/chat'
 
 interface Props {
   mention: Mention

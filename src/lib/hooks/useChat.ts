@@ -1,6 +1,6 @@
-import { useChatStore } from '@/stores/chat-store'
-import { streamSSE } from '@/lib/sse'
-import type { Mention } from '@/types/chat'
+import { useChatStore } from '@/lib/store/chat-store'
+import { streamSSE } from '@/lib/api/sse'
+import type { Mention } from '@/lib/types/chat'
 
 export function useChat() {
   const store = useChatStore()

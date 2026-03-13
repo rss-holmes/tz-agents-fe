@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import type { ChatMessage, Mention } from '@/types/chat'
-import type { PODraft } from '@/types/documents'
+import type { ChatMessage, Mention } from '@/lib/types/chat'
+import type { PODraft } from '@/lib/types/documents'
 
 interface ChatStore {
   sessionId: string | null

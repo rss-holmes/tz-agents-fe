@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { apiFetch } from '@/lib/api'
-import type { MasterDataItem } from '@/types/master-data'
+import { apiFetch } from '@/lib/api/api'
+import type { MasterDataItem } from '@/lib/types/master-data'
 
 export function useMentionSearch(entityType: string | null, query: string) {
   const [results, setResults] = useState<MasterDataItem[]>([])

@@ -12,7 +12,7 @@ import {
   TableCell,
   TableFooter,
 } from '@/components/ui/table'
-import type { PODraft } from '@/types/documents'
+import type { PODraft } from '@/lib/types/documents'
 
 interface Props {
   draft: PODraft

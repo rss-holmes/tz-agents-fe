@@ -6,7 +6,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import { Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { createMentionExtension } from './MentionExtension'
-import type { Mention } from '@/types/chat'
+import type { Mention } from '@/lib/types/chat'
 
 interface Props {
   onSend: (text: string, mentions: Mention[]) => void

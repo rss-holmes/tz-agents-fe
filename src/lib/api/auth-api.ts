@@ -1,5 +1,5 @@
-import { authClient } from '@/lib/axios'
-import type { AuthResponse, LoginPayload } from '@/types/auth'
+import { authClient } from './axios'
+import type { AuthResponse, LoginPayload } from '@/lib/types/auth'
 
 export async function login(payload: LoginPayload): Promise<AuthResponse> {
   const { data } = await authClient.post<AuthResponse>(

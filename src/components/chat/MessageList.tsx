@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
-import type { ChatMessage } from '@/types/chat'
+import type { ChatMessage } from '@/lib/types/chat'
 import MessageBubble from './MessageBubble'
 import ClarificationCard from './ClarificationCard'
 import SubmitResultCard from './SubmitResultCard'

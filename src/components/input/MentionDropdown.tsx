@@ -24,8 +24,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
-import { useMentionSearch } from '@/hooks/useMentionSearch'
-import type { MasterDataCategory } from '@/types/master-data'
+import { useMentionSearch } from '@/lib/hooks/useMentionSearch'
+import type { MasterDataCategory } from '@/lib/types/master-data'
 import type { LucideIcon } from 'lucide-react'
 
 const CATEGORIES: Array<MasterDataCategory & { icon: LucideIcon }> = [

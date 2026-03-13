@@ -1,5 +1,5 @@
-import { authClient } from '@/lib/axios'
-import { useAuthStore } from '@/stores/auth-store'
+import { authClient } from './axios'
+import { useAuthStore } from '@/lib/store/auth-store'
 
 interface RefreshTokenResponse {
   refresh_token: string

@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown'
-import type { ChatMessage } from '@/types/chat'
+import type { ChatMessage } from '@/lib/types/chat'
 import MentionChip from './MentionChip'
 
 interface Props {
