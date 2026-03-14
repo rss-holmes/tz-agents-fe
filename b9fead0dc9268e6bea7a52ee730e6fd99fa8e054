@@ -1,0 +1,24 @@
+CLAUDE.md
+  0ce95eb310630942 7,9-13,46-47,49-98,106-108,113,115,117-121,123-125,127-169,171,173-177,179-182,184-195,206-210,212-215
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "b9fead0dc9268e6bea7a52ee730e6fd99fa8e054",
+  "prompts": {
+    "0ce95eb310630942": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb74ae04-aa3a-47bd-9eaf-448257feeefb",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 150,
+      "total_deletions": 14,
+      "accepted_lines": 150,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/17c5ed0af917422671a5e107b0237f9d534d926e73828bd5dbcf8a87dd77d01f"
+    }
+  }
+}
