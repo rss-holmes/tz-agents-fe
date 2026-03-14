@@ -28,7 +28,7 @@ import { useMentionSearch } from '@/lib/hooks/useMentionSearch'
 import type { MasterDataCategory } from '@/lib/types/master-data'
 import type { LucideIcon } from 'lucide-react'
 
-const CATEGORIES: Array<MasterDataCategory & { icon: LucideIcon }> = [
+const CATEGORIES: Array<Omit<MasterDataCategory, 'icon'> & { icon: LucideIcon }> = [
   { type: 'counterparty', label: 'Counterparties', icon: Building },
   { type: 'item', label: 'Items', icon: Package },
   { type: 'tax', label: 'Tax', icon: Receipt },
@@ -50,15 +50,23 @@ interface Props {
 const MentionDropdown = forwardRef((props: Props, ref) => {
   const [phase, setPhase] = useState<'categories' | 'search'>('categories')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [categoryFilter, setCategoryFilter] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const { results, loading } = useMentionSearch(selectedCategory, searchQuery)
 
+  const filteredCategories = categoryFilter
+    ? CATEGORIES.filter((cat) =>
+        cat.label.toLowerCase().includes(categoryFilter.toLowerCase()),
+      )
+    : CATEGORIES
+
   const selectCategory = (type: string) => {
     setSelectedCategory(type)
     setPhase('search')
     setSearchQuery('')
+    setCategoryFilter('')
     setSelectedIndex(0)
   }
 
@@ -74,10 +82,14 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
     [props, selectedCategory],
   )
 
-  // Keyboard navigation
+  // Keyboard navigation — must return true to prevent Tiptap from
+  // processing the key as editor input (which would type into the chat box).
   useImperativeHandle(ref, () => ({
     onKeyDown: ({ event }: { event: KeyboardEvent }) => {
-      const items = phase === 'categories' ? CATEGORIES : results
+      if (event.key === 'Escape') return false // let Tiptap close the popup
+
+      const items = phase === 'categories' ? filteredCategories : results
+
       if (event.key === 'ArrowUp') {
         setSelectedIndex((i) => (i > 0 ? i - 1 : items.length - 1))
         return true
@@ -88,25 +100,46 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
       }
       if (event.key === 'Enter') {
         if (phase === 'categories') {
-          selectCategory(CATEGORIES[selectedIndex].type)
+          if (filteredCategories[selectedIndex]) {
+            selectCategory(filteredCategories[selectedIndex].type)
+          }
         } else if (results[selectedIndex]) {
           selectItem(results[selectedIndex])
         }
         return true
       }
-      if (event.key === 'Backspace' && phase === 'search' && !searchQuery) {
-        setPhase('categories')
-        setSelectedCategory(null)
-        setSelectedIndex(0)
+      if (event.key === 'Backspace') {
+        if (phase === 'categories') {
+          setCategoryFilter((prev) => prev.slice(0, -1))
+        } else if (!searchQuery) {
+          setPhase('categories')
+          setSelectedCategory(null)
+          setSelectedIndex(0)
+        } else {
+          setSearchQuery((prev) => prev.slice(0, -1))
+        }
         return true
       }
-      return false
+
+      // Forward printable characters to the active filter/search state
+      if (event.key.length === 1 && !event.ctrlKey && !event.metaKey) {
+        if (phase === 'categories') {
+          setCategoryFilter((prev) => prev + event.key)
+          setSelectedIndex(0)
+        } else {
+          setSearchQuery((prev) => prev + event.key)
+        }
+        return true
+      }
+
+      // Block all other keys from reaching the editor
+      return true
     },
   }))
 
   useEffect(() => {
     setSelectedIndex(0)
-  }, [results])
+  }, [results, filteredCategories])
 
   // Phase 1: Category selection
   if (phase === 'categories') {
@@ -118,22 +151,42 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
           </CardTitle>
         </CardHeader>
         <Separator />
+        <div className="px-3 py-2">
+          <div className="flex items-center gap-2 text-gray-400">
+            <Search size={14} />
+            <Input
+              type="text"
+              value={categoryFilter}
+              readOnly
+              placeholder="Filter categories..."
+              className="h-8 border-0 shadow-none focus-visible:ring-0 text-sm text-gray-700 placeholder:text-gray-400"
+            />
+          </div>
+        </div>
+        <Separator />
         <CardContent className="p-0">
-          {CATEGORIES.map((cat, i) => {
-            const Icon = cat.icon
-            return (
-              <Button
-                key={cat.type}
-                variant="ghost"
-                onClick={() => selectCategory(cat.type)}
-                className={`w-full justify-start h-auto px-3 py-2.5 text-sm rounded-none
-                  ${i === selectedIndex ? 'bg-blue-50 text-blue-800' : 'text-gray-700'}`}
-              >
-                <Icon size={16} className="text-gray-400" />
-                {cat.label}
-              </Button>
-            )
-          })}
+          <ScrollArea className="max-h-60">
+            {filteredCategories.length === 0 && (
+              <div className="px-3 py-4 text-center text-sm text-gray-400">
+                No categories found
+              </div>
+            )}
+            {filteredCategories.map((cat, i) => {
+              const Icon = cat.icon
+              return (
+                <Button
+                  key={cat.type}
+                  variant="ghost"
+                  onClick={() => selectCategory(cat.type)}
+                  className={`w-full justify-start h-auto px-3 py-2.5 text-sm rounded-none
+                    ${i === selectedIndex ? 'bg-blue-50 text-blue-800' : 'text-gray-700'}`}
+                >
+                  <Icon size={16} className="text-gray-400" />
+                  {cat.label}
+                </Button>
+              )
+            })}
+          </ScrollArea>
         </CardContent>
       </Card>
     )
@@ -169,26 +222,9 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
           <Input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'ArrowUp') {
-                e.preventDefault()
-                setSelectedIndex((i) => (i > 0 ? i - 1 : results.length - 1))
-              } else if (e.key === 'ArrowDown') {
-                e.preventDefault()
-                setSelectedIndex((i) => (i < results.length - 1 ? i + 1 : 0))
-              } else if (e.key === 'Enter') {
-                e.preventDefault()
-                if (results[selectedIndex]) selectItem(results[selectedIndex])
-              } else if (e.key === 'Backspace' && !searchQuery) {
-                setPhase('categories')
-                setSelectedCategory(null)
-                setSelectedIndex(0)
-              }
-            }}
+            readOnly
             placeholder="Search..."
             className="h-8 border-0 shadow-none focus-visible:ring-0 text-sm text-gray-700 placeholder:text-gray-400"
-            autoFocus
           />
         </div>
       </div>
