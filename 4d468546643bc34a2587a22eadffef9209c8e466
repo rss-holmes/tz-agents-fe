@@ -1,0 +1,49 @@
+src/lib/store/chat-store.ts
+  dff4d6742c7d6cdf 2,35,141-151
+src/routes/login.tsx
+  dff4d6742c7d6cdf 34
+src/lib/store/auth-store.ts
+  dff4d6742c7d6cdf 7,11-12,23,25-26,28-31,36
+  62cf10544080739a 2,18,40-42
+src/components/AppSidebar.tsx
+  dff4d6742c7d6cdf 1-67,69-192
+src/routes/index.tsx
+  dff4d6742c7d6cdf 3-5,7-10,22-36
+src/components/chat/ChatContainer.tsx
+  dff4d6742c7d6cdf 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.12",
+  "base_commit_sha": "4d468546643bc34a2587a22eadffef9209c8e466",
+  "prompts": {
+    "62cf10544080739a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "28f37df7-49be-41ab-9200-670ac4c1d272",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 12,
+      "accepted_lines": 5,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/4b4b35558b4f9e8b5d7d7d9fbebbfd038f91cc5c8fe4c609ca6610658fea027e"
+    },
+    "dff4d6742c7d6cdf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "33dc518e-17b2-4dff-8a7f-23ea79ed7864",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 260,
+      "total_deletions": 32,
+      "accepted_lines": 239,
+      "overriden_lines": 2,
+      "messages_url": "https://usegitai.com/cas/dbadb6bdb197e88f6aaf97b0e5d2cafc6be1c0846982cd75bd51bd882c079309"
+    }
+  }
+}
