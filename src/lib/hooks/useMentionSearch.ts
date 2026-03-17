@@ -25,6 +25,11 @@ export function useMentionSearch(entityType: string | null, query: string) {
         setResults(
           data.data.map((item) => ({
             ...item,
+            id:
+              item.id ||
+              (item.company_id as string) ||
+              (item.itemid as string) ||
+              '',
             name: item.name || item.title || (item.itemid as string) || '',
           })),
         )
