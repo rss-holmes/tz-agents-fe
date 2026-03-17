@@ -103,6 +103,19 @@ export default function POPreviewPanel({
             label="Delivery Date"
             value={draft.primary_document_details.delivery_date}
           />
+          <FieldRow
+            label="Logistics"
+            value={
+              draft.additional_document_details.selected_logistic_details?.id
+            }
+          />
+          <FieldRow
+            label="Terms & Conditions"
+            value={
+              draft.additional_document_details
+                .selected_terms_and_conditions?.id
+            }
+          />
           {draft.comment?.value && (
             <FieldRow label="Comment" value={draft.comment.value} />
           )}
