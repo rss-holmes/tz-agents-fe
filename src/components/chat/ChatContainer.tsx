@@ -14,7 +14,7 @@ export default function ChatContainer() {
     <div className="flex h-full bg-white">
       {/* Left: Chat area */}
       <div
-        className={`flex flex-col transition-all duration-300 ${
+        className={`flex flex-col min-h-0 transition-all duration-300 ${
           showPanel ? 'w-1/2 lg:w-3/5' : 'w-full'
         }`}
       >
@@ -51,7 +51,7 @@ export default function ChatContainer() {
       {showPanel && (
         <>
           <Separator orientation="vertical" />
-          <div className="w-1/2 lg:w-2/5 bg-white overflow-y-auto">
+          <div className="w-1/2 lg:w-2/5 bg-white h-full overflow-hidden">
             <POPreviewPanel
               draft={chat.poDraft!}
               isReady={chat.poReady}
