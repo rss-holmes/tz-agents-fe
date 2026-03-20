@@ -1,0 +1,64 @@
+src/lib/utils/jwt.ts
+  cc4fb419c0601ce3 1-18
+src/lib/store/auth-store.ts
+  1dda4a8f4219aa6a 4-5,10-11,24-25,27,31,45,51-52
+src/routes/login.tsx
+  1dda4a8f4219aa6a 3,29,36
+src/lib/types/profile.ts
+  1dda4a8f4219aa6a 16-20
+  cc4fb419c0601ce3 1-15
+src/components/AppSidebar.tsx
+  1dda4a8f4219aa6a 76
+src/lib/hooks/useProfile.ts
+  1dda4a8f4219aa6a 5,7,11,13-14,16-18
+  cc4fb419c0601ce3 1-4,6,8-10,12,15,19-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.15",
+  "base_commit_sha": "354510eadd12c2d551541e83fe71ed6053c07ebf",
+  "prompts": {
+    "1dda4a8f4219aa6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cce9bbcf-1282-4bcd-b351-95eefdfcdbb4",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "pratik-dev-25 <pratik.m@letstranzact.com>",
+      "messages": [],
+      "total_additions": 76,
+      "total_deletions": 58,
+      "accepted_lines": 28,
+      "overriden_lines": 5,
+      "messages_url": "https://usegitai.com/cas/1d400141800d60e8b367ceff9e31c181e5ad3b75239ae79407b95ca93da16658"
+    },
+    "cc4fb419c0601ce3": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7e48d972-0800-4b03-8cc6-41ba3ddeac27",
+        "model": "composer-1.5"
+      },
+      "human_author": "pratik-dev-25 <pratik.m@letstranzact.com>",
+      "messages": [],
+      "total_additions": 117,
+      "total_deletions": 13,
+      "accepted_lines": 54,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/780597b71fedcc3c6b6543bf28609e6aeb6c25e46b9d7d4a7f1f73dbcc59fa7d"
+    },
+    "dd6d2d3a38a20325": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ebf363e-3bb9-4424-bf5f-1e48ccd29e2a",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "pratik-dev-25 <pratik.m@letstranzact.com>",
+      "messages": [],
+      "total_additions": 345,
+      "total_deletions": 104,
+      "accepted_lines": 310,
+      "overriden_lines": 2,
+      "messages_url": "https://usegitai.com/cas/6962d5d2debd5823dde4da2c267df01c399885444d61da0c613b0faaf34349f4"
+    }
+  }
+}
