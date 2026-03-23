@@ -34,7 +34,7 @@ function ChatPage() {
   const { sessionId, isError } = useSessionNavigation()
 
   if (sessionId && isError) {
-    return <Navigate to="/" search={{ sessionId: undefined }} />
+    return <Navigate to="/" replace />
   }
 
   return (
