@@ -1,5 +1,6 @@
 /** API shapes for GET /api/sessions (snake_case from FastAPI). */
 
+import type { Mention } from '@/lib/types/chat'
 import type { PODraft } from '@/lib/types/documents'
 
 export interface SessionSummary {
@@ -13,6 +14,7 @@ export interface StoredMessage {
   role: 'user' | 'assistant'
   content: string
   timestamp: string
+  mentions?: Mention[]
 }
 
 export interface SessionDetail {
