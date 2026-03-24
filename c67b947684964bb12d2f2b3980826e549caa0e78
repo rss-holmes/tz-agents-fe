@@ -1,0 +1,22 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.17",
+  "base_commit_sha": "c67b947684964bb12d2f2b3980826e549caa0e78",
+  "prompts": {
+    "68d00b24f92430f1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e6a130c-73d6-49a7-9e57-c82544e2d833",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "scar3crow <rss.holmes@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 1,
+      "accepted_lines": 0,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/315033121082d8bcc04d81f38e82830fbefd4f4fdc4369a303935eaa9eb0b817"
+    }
+  }
+}
