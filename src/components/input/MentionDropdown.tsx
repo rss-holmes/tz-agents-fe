@@ -26,12 +26,13 @@ import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { useMentionSearch } from '@/lib/hooks/useMentionSearch'
-import type { MasterDataCategory } from '@/lib/types/master-data'
-import type { LucideIcon } from 'lucide-react'
+import type {
+  MasterDataCategory,
+  MasterDataEntityType,
+  MasterDataRow,
+} from '@/lib/types/master-data'
 
-const CATEGORIES: Array<
-  Omit<MasterDataCategory, 'icon'> & { icon: LucideIcon }
-> = [
+const CATEGORIES: MasterDataCategory[] = [
   { type: 'counterparty', label: 'Counterparties', icon: Building },
   { type: 'item', label: 'Items', icon: Package },
   { type: 'tax', label: 'Tax', icon: Receipt },
@@ -52,12 +53,16 @@ interface Props {
 
 const MentionDropdown = forwardRef((props: Props, ref) => {
   const [phase, setPhase] = useState<'categories' | 'search'>('categories')
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] =
+    useState<MasterDataEntityType | null>(null)
   const [categoryFilter, setCategoryFilter] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const { results, loading } = useMentionSearch(selectedCategory, searchQuery)
+  const { results, loading, blockedReason } = useMentionSearch(
+    selectedCategory,
+    searchQuery,
+  )
 
   const filteredCategories = categoryFilter
     ? CATEGORIES.filter((cat) =>
@@ -65,7 +70,7 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
       )
     : CATEGORIES
 
-  const selectCategory = (type: string) => {
+  const selectCategory = (type: MasterDataEntityType) => {
     setSelectedCategory(type)
     setPhase('search')
     setSearchQuery('')
@@ -74,7 +79,7 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
   }
 
   const selectItem = useCallback(
-    (item: { id: string; name: string; [key: string]: unknown }) => {
+    (item: MasterDataRow) => {
       props.command({
         id: item.id,
         label: item.name,
@@ -251,7 +256,12 @@ const MentionDropdown = forwardRef((props: Props, ref) => {
               Loading...
             </div>
           )}
-          {!loading && results.length === 0 && (
+          {!loading && blockedReason && (
+            <div className="px-3 py-4 text-center text-sm text-amber-700">
+              {blockedReason}
+            </div>
+          )}
+          {!loading && !blockedReason && results.length === 0 && (
             <div className="px-3 py-4 text-center text-sm text-gray-400">
               No results found
             </div>
