@@ -38,7 +38,7 @@ export interface CounterpartyOption extends MasterDataBase {
 }
 
 export interface ItemOption extends MasterDataBase {
-  itemid?: string
+  product_name?: string
   hsn_code?: string
   price?: number
   units?: ItemUnit[]
