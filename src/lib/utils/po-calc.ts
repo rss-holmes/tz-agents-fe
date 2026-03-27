@@ -4,7 +4,6 @@ import type {
   POItem,
 } from '@/lib/types/documents'
 
-
 function parseQty(item: POItem): number {
   if (item.quantity == null || item.quantity === '') return 0
   const n = Number(item.quantity)
