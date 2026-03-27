@@ -1,5 +1,5 @@
 /**
- * Frontend mirrors of backend Pydantic models (models/po_draft.py).
+ * Frontend mirrors of backend Pydantic models (schemas/po_draft.py).
  * The backend sends `draft.model_dump(exclude_none=True)` directly,
  * so these types match the serialized PODraft structure.
  */
@@ -7,6 +7,11 @@
 export interface IdRef {
   id: string
   name: string
+}
+
+/** Tax line with optional percentage for preview calculations (matches TaxRef in backend). */
+export interface TaxRef extends IdRef {
+  tax_percentage?: number
 }
 
 export interface CompanyRef {
@@ -51,7 +56,7 @@ export interface POItem {
   unit?: IdRef
   price?: number
   hsn_code?: string
-  taxes?: IdRef[]
+  taxes?: TaxRef[]
   comment?: string
   alternate_unit?: IdRef
   alternate_quantity?: number
@@ -71,9 +76,29 @@ export interface DocNumber {
   value?: string
 }
 
+export interface OCDetails {
+  oc_number?: string
+  oc_date?: string
+}
+
+export interface IndentDetails {
+  indent_number?: string
+  indent_date?: string
+}
+
+/** Matches backend NonTaxableExtraCharge (nested charge_type / unit_type). */
+export interface NonTaxableExtraChargePayload {
+  charge_type?: { type?: number }
+  unit_type?: { type?: number }
+  charge_description?: string
+  value?: string
+}
+
 export interface PrimaryDocumentDetails {
   doc_number?: DocNumber
   delivery_date?: string
+  oc_details?: OCDetails
+  indent_details?: IndentDetails
   payment_terms?: IdRef
   store_details?: IdRef
   custom_fields?: CustomField[]
@@ -83,6 +108,7 @@ export interface AmountDetails {
   reverse_charge?: boolean
   grand_total_round_off?: boolean
   base_advance_to_pay?: number
+  non_taxable_extra_charges?: NonTaxableExtraChargePayload[]
 }
 
 export interface AdditionalDocumentDetails {
@@ -93,8 +119,8 @@ export interface AdditionalDocumentDetails {
 
 export interface GstExtraCharge {
   description?: string
-  total?: string
-  taxes?: IdRef[]
+  total?: number
+  taxes?: TaxRef[]
 }
 
 export interface Comment {
