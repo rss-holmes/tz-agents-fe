@@ -1,0 +1,24 @@
+src/lib/types/master-data.ts
+  23bd6601f16f12de 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.19",
+  "base_commit_sha": "f5f7996a51310d90c1dbcb2bf7a64aa070151aa3",
+  "prompts": {
+    "23bd6601f16f12de": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "74d5c238-cb1d-48f8-93d7-ae6d8dad3eba",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "pratik-dev-25 <pratik.m@letstranzact.com>",
+      "messages": [],
+      "total_additions": 49,
+      "total_deletions": 49,
+      "accepted_lines": 18,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/c8306a0949c20e891b4132be6157c8cf9cdeffe9ee3c3bf3efb7ed2093373668"
+    }
+  }
+}

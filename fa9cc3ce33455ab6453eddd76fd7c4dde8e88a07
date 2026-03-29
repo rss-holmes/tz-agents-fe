@@ -1,0 +1,24 @@
+src/components/chat/po-preview/POFooterFields.tsx
+  8611a0224574b6f9 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.19",
+  "base_commit_sha": "fa9cc3ce33455ab6453eddd76fd7c4dde8e88a07",
+  "prompts": {
+    "8611a0224574b6f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f84a491f-ecdd-4182-a443-680d29656c21",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "pratik-dev-25 <pratik.m@letstranzact.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/cc3f3e021b5c553db3fc43330137199e478a68bd8231805c2ca1de41d63427c0"
+    }
+  }
+}
