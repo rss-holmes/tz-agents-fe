@@ -27,11 +27,6 @@ function FieldGroup({ title, rows }: { title: string; rows: Row[] }) {
   )
 }
 
-function trimOrUndefined(value?: string) {
-  const trimmed = value?.trim()
-  return trimmed || undefined
-}
-
 export default function POHeaderFields({ draft }: { draft: PODraft }) {
   const pd = draft.primary_document_details
   const buyer = draft.buyer_details
@@ -40,10 +35,10 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
   const cv = draft.currency.currency_value
 
   const documentRows: Row[] = [
-    { label: 'Transaction', value: draft.transaction.title?.trim() },
+    { label: 'Transaction', value: draft.transaction.title },
     {
       label: 'Document Number',
-      value: pd.doc_number?.value?.trim(),
+      value: pd.doc_number?.value,
     },
     { label: 'Currency', value: formatCurrencyLabel(cv) },
   ]
@@ -51,73 +46,67 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
   const partiesRows: Row[] = [
     {
       label: 'Buyer',
-      value: trimOrUndefined(buyer.buyer_company_details?.name),
+      value: buyer.buyer_company_details?.name,
       showPending: true,
     },
     {
       label: 'Buyer Billing Address',
-      value: trimOrUndefined(buyer.selected_buyer_billing_address?.name),
+      value: buyer.selected_buyer_billing_address?.name,
     },
     {
       label: 'Supplier',
-      value: trimOrUndefined(supplier.supplier_company_details?.name),
+      value: supplier.supplier_company_details?.name,
       showPending: true,
     },
     {
       label: 'Supplier Billing Address',
-      value: trimOrUndefined(supplier.selected_supplier_billing_address?.name),
+      value: supplier.selected_supplier_billing_address?.name,
     },
   ]
 
   const deliveryRows: Row[] = [
     {
       label: 'Store',
-      value: trimOrUndefined(pd.store_details?.name),
+      value: pd.store_details?.name,
       showPending: true,
     },
     {
       label: 'Delivery Date',
-      value: trimOrUndefined(pd.delivery_date),
+      value: pd.delivery_date,
       showPending: true,
     },
     {
       label: 'Delivery Location',
-      value: trimOrUndefined(buyer.selected_buyer_delivery_location?.name),
+      value: buyer.selected_buyer_delivery_location?.name,
     },
     {
       label: 'Place of Supply',
       value: formatPlaceOfSupply(buyer.place_of_supply),
     },
-    { label: 'Kind Attention', value: buyer.kind_attention?.trim() },
+    { label: 'Kind Attention', value: buyer.kind_attention },
   ]
 
   const referenceRows: Row[] = [
-    { label: 'OC Number', value: pd.oc_details?.oc_number?.trim() },
-    { label: 'OC Date', value: pd.oc_details?.oc_date?.trim() },
-    {
-      label: 'Indent Number',
-      value: pd.indent_details?.indent_number?.trim(),
-    },
-    {
-      label: 'Indent Date',
-      value: pd.indent_details?.indent_date?.trim(),
-    },
+    { label: 'OC Number', value: pd.oc_details?.oc_number },
+    { label: 'OC Date', value: pd.oc_details?.oc_date },
+    { label: 'Indent Number', value: pd.indent_details?.indent_number },
+    { label: 'Indent Date', value: pd.indent_details?.indent_date },
   ]
 
   const termsRows: Row[] = [
     {
       label: 'Payment Terms',
-      value: trimOrUndefined(pd.payment_terms?.name),
+      value: pd.payment_terms?.name,
       showPending: true,
     },
     {
       label: 'Logistics',
-      value: trimOrUndefined(add.selected_logistic_details?.name),
+      value: add.selected_logistic_details?.name,
       showPending: true,
     },
     {
       label: 'Terms & Conditions',
-      value: trimOrUndefined(add.selected_terms_and_conditions?.name),
+      value: add.selected_terms_and_conditions?.name,
       showPending: true,
     },
   ]
@@ -134,10 +123,10 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
       <FieldGroup title="Reference Numbers" rows={referenceRows} />
       <FieldGroup title="Terms" rows={termsRows} />
 
-      {trimOrUndefined(draft.comment?.value) ? (
+      {draft.comment?.value?.trim() ? (
         <>
           <SectionHeading>Comment</SectionHeading>
-          <FieldRow label="Comment" value={draft.comment.value} />
+          <FieldRow label="Comment" value={draft.comment?.value} />
         </>
       ) : null}
 
