@@ -32,14 +32,6 @@ export default function POAmountSummary({
     })
   }
 
-  if (amountDetails.reverse_charge !== undefined) {
-    rows.push({
-      key: 'rcm',
-      label: 'RCM',
-      value: amountDetails.reverse_charge ? 'Yes' : 'No',
-    })
-  }
-
   if (tcsDetails?.value !== undefined) {
     const pct = formatTcsPercent(tcsDetails.value)
     if (pct) {
@@ -49,14 +41,6 @@ export default function POAmountSummary({
         value: pct,
       })
     }
-  }
-
-  if (amountDetails.grand_total_round_off !== undefined) {
-    rows.push({
-      key: 'round',
-      label: 'Round Off',
-      value: amountDetails.grand_total_round_off ? 'Yes' : 'No',
-    })
   }
 
   if (amountDetails.base_advance_to_pay !== undefined) {
