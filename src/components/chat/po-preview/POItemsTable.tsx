@@ -23,8 +23,6 @@ import {
   calcItemsSubtotal,
 } from '@/lib/utils/po-calc'
 
-const EM = '\u2014'
-
 function ItemMeta({
   comment,
   customFields,
@@ -133,7 +131,7 @@ export default function POItemsTable({
                     <TableCell className="py-2 text-gray-400">
                       {i + 1}
                     </TableCell>
-                    <TableCell className="py-2 break-words whitespace-normal max-w-[180px]">
+                    <TableCell className="py-2 wrap-break-words whitespace-normal max-w-[180px]">
                       <span className="text-gray-900">{item.name}</span>
                       <ItemMeta
                         comment={item.comment}
@@ -141,36 +139,36 @@ export default function POItemsTable({
                       />
                     </TableCell>
                     <TableCell className="py-2 text-center text-gray-600">
-                      {item.hsn_code ?? EM}
+                      {item.hsn_code ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-600">
-                      {qty != null && Number.isFinite(qty) ? qty : EM}
+                      {qty != null && Number.isFinite(qty) ? qty : '-'}
                     </TableCell>
                     <TableCell className="py-2 text-center text-gray-600">
-                      {item.unit?.name ?? EM}
+                      {item.unit?.name ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-center text-gray-600">
-                      {altStr ?? EM}
+                      {altStr ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-600">
                       {rate != null && Number.isFinite(rate)
                         ? formatCurrency(rate, currencyValue)
-                        : EM}
+                        : '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-600">
-                      {d1 ?? EM}
+                      {d1 ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-600">
-                      {d2 ?? EM}
+                      {d2 ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-600">
-                      {d3 ?? EM}
+                      {d3 ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-800">
                       {formatCurrency(untaxed, currencyValue)}
                     </TableCell>
                     <TableCell className="py-2 text-gray-600 whitespace-normal">
-                      {formatTaxNames(item.taxes) ?? EM}
+                      {formatTaxNames(item.taxes) ?? '-'}
                     </TableCell>
                     <TableCell className="py-2 text-right text-gray-800">
                       {formatCurrency(taxAmt, currencyValue)}

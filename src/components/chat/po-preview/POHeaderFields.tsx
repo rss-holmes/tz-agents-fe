@@ -3,18 +3,13 @@ import SectionHeading from '@/components/chat/po-preview/SectionHeading'
 import type { PODraft } from '@/lib/types/documents'
 import { formatCurrencyLabel, formatPlaceOfSupply } from '@/lib/utils/po-format'
 
-function nonEmpty(s: string | undefined): string | undefined {
-  const t = s?.trim()
-  return t ? t : undefined
-}
-
 interface Row {
   label: string
   value: string | undefined
 }
 
 function FieldGroup({ title, rows }: { title: string; rows: Row[] }) {
-  const filled = rows.filter((r) => r.value !== undefined && r.value !== '')
+  const filled = rows.filter((r) => Boolean(r.value?.trim()))
   if (!filled.length) return null
   return (
     <>
@@ -34,10 +29,10 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
   const cv = draft.currency.currency_value
 
   const documentRows: Row[] = [
-    { label: 'Transaction', value: nonEmpty(draft.transaction.title) },
+    { label: 'Transaction', value: draft.transaction.title?.trim() },
     {
       label: 'Document Number',
-      value: nonEmpty(pd.doc_number?.value),
+      value: pd.doc_number?.value?.trim(),
     },
     { label: 'Currency', value: formatCurrencyLabel(cv) },
   ]
@@ -45,66 +40,67 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
   const partiesRows: Row[] = [
     {
       label: 'Buyer',
-      value: nonEmpty(buyer.buyer_company_details?.name),
+      value: buyer.buyer_company_details?.name?.trim(),
     },
     {
       label: 'Buyer Billing Address',
-      value: nonEmpty(buyer.selected_buyer_billing_address?.name),
+      value: buyer.selected_buyer_billing_address?.name.trim(),
     },
     {
       label: 'Supplier',
-      value: nonEmpty(supplier.supplier_company_details?.name),
+      value: supplier.supplier_company_details?.name?.trim(),
     },
     {
       label: 'Supplier Billing Address',
-      value: nonEmpty(supplier.selected_supplier_billing_address?.name),
+      value: supplier.selected_supplier_billing_address?.name.trim(),
     },
   ]
 
   const deliveryRows: Row[] = [
-    { label: 'Store', value: nonEmpty(pd.store_details?.name) },
-    { label: 'Delivery Date', value: nonEmpty(pd.delivery_date) },
+    { label: 'Store', value: pd.store_details?.name.trim() },
+    { label: 'Delivery Date', value: pd.delivery_date?.trim() },
     {
       label: 'Delivery Location',
-      value: nonEmpty(buyer.selected_buyer_delivery_location?.name),
+      value: buyer.selected_buyer_delivery_location?.name.trim(),
     },
     {
       label: 'Place of Supply',
       value: formatPlaceOfSupply(buyer.place_of_supply),
     },
-    { label: 'Kind Attention', value: nonEmpty(buyer.kind_attention) },
+    { label: 'Kind Attention', value: buyer.kind_attention?.trim() },
   ]
 
   const referenceRows: Row[] = [
-    { label: 'OC Number', value: nonEmpty(pd.oc_details?.oc_number) },
-    { label: 'OC Date', value: nonEmpty(pd.oc_details?.oc_date) },
+    { label: 'OC Number', value: pd.oc_details?.oc_number?.trim() },
+    { label: 'OC Date', value: pd.oc_details?.oc_date?.trim() },
     {
       label: 'Indent Number',
-      value: nonEmpty(pd.indent_details?.indent_number),
+      value: pd.indent_details?.indent_number?.trim(),
     },
     {
       label: 'Indent Date',
-      value: nonEmpty(pd.indent_details?.indent_date),
+      value: pd.indent_details?.indent_date?.trim(),
     },
   ]
 
   const termsRows: Row[] = [
     {
       label: 'Payment Terms',
-      value: nonEmpty(pd.payment_terms?.name),
+      value: pd.payment_terms?.name.trim(),
     },
     {
       label: 'Logistics',
-      value: nonEmpty(add.selected_logistic_details?.name),
+      value: add.selected_logistic_details?.name.trim(),
     },
     {
       label: 'Terms & Conditions',
-      value: nonEmpty(add.selected_terms_and_conditions?.name),
+      value: add.selected_terms_and_conditions?.name.trim(),
     },
   ]
 
-  const customFields = pd.custom_fields ?? []
-  const anyCustomFilled = customFields.some((cf) => nonEmpty(cf.value))
+  const customFieldsFilled = (pd.custom_fields ?? []).filter((cf) =>
+    Boolean(cf.value.trim()),
+  )
 
   return (
     <div className="space-y-1">
@@ -114,22 +110,18 @@ export default function POHeaderFields({ draft }: { draft: PODraft }) {
       <FieldGroup title="Reference Numbers" rows={referenceRows} />
       <FieldGroup title="Terms" rows={termsRows} />
 
-      {draft.comment?.value ? (
+      {draft.comment?.value.trim() ? (
         <>
           <SectionHeading>Comment</SectionHeading>
           <FieldRow label="Comment" value={draft.comment.value} />
         </>
       ) : null}
 
-      {anyCustomFilled ? (
+      {customFieldsFilled.length ? (
         <>
           <SectionHeading>Custom Fields</SectionHeading>
-          {customFields.map((cf) => (
-            <FieldRow
-              key={cf.uuid}
-              label={cf.name}
-              value={nonEmpty(cf.value)}
-            />
+          {customFieldsFilled.map((cf) => (
+            <FieldRow key={cf.uuid} label={cf.name} value={cf.value} />
           ))}
         </>
       ) : null}

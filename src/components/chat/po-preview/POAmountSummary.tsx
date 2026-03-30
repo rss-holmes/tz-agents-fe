@@ -22,10 +22,10 @@ export default function POAmountSummary({
 
   for (let i = 0; i < ntecs.length; i++) {
     const charge = ntecs[i]
-    const desc = charge.charge_description?.trim() || `Charge ${i + 1}`
+    const desc = charge.charge_description?.trim()
     rows.push({
       key: `ntec-${i}`,
-      label: desc,
+      label: desc ?? "",
       value: formatNtecValue(charge, currencyValue),
     })
   }
@@ -54,8 +54,8 @@ export default function POAmountSummary({
   return (
     <div className="mt-6 space-y-1">
       <SectionHeading>Amount Details</SectionHeading>
-      {rows.map((r) => (
-        <FieldRow key={r.key} label={r.label} value={r.value} />
+      {rows.map((row) => (
+        <FieldRow key={row.key} label={row.label} value={row.value} />
       ))}
     </div>
   )

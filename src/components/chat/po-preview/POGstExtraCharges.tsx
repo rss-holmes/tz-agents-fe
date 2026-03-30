@@ -11,8 +11,6 @@ import type { GstExtraCharge } from '@/lib/types/documents'
 import { formatCurrency, formatTaxNames } from '@/lib/utils/po-format'
 import { calcGstChargeTax } from '@/lib/utils/po-calc'
 
-const EM = '\u2014'
-
 export default function POGstExtraCharges({
   charges,
   currencyValue,
@@ -46,13 +44,13 @@ export default function POGstExtraCharges({
                 <TableRow key={`${charge.description ?? 'gst'}-${i}`}>
                   <TableCell className="py-2 text-gray-400">{i + 1}</TableCell>
                   <TableCell className="py-2 text-gray-800">
-                    {charge.description ?? EM}
+                    {charge.description ?? '-'}
                   </TableCell>
                   <TableCell className="py-2 text-right">
                     {formatCurrency(total, currencyValue)}
                   </TableCell>
                   <TableCell className="py-2 text-gray-600 whitespace-normal">
-                    {formatTaxNames(charge.taxes) ?? EM}
+                    {formatTaxNames(charge.taxes) ?? '-'}
                   </TableCell>
                   <TableCell className="py-2 text-right font-medium">
                     {formatCurrency(taxAmt, currencyValue)}
