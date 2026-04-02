@@ -65,10 +65,12 @@ export function createMentionExtension() {
               return true
             }
             return (
-              component?.ref as
-                | { onKeyDown: (props: unknown) => boolean }
-                | undefined
-            )?.onKeyDown(props) ?? false
+              (
+                component?.ref as
+                  | { onKeyDown: (props: unknown) => boolean }
+                  | undefined
+              )?.onKeyDown(props) ?? false
+            )
           },
           onExit: () => {
             popup?.[0]?.destroy()
